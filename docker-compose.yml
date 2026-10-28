@@ -1,0 +1,54 @@
+services:
+  arma2:
+    build:
+      context: .
+    image: arma2-server:latest
+    container_name: arma2-server
+    restart: unless-stopped
+    # Arma 2 hosts badly on bridge networking with some mods; on Linux hosts
+    # you can uncomment the next line and drop the ports block below.
+    # network_mode: host
+    ports:
+      - "2302-2305:2302-2305/udp"
+      - "8766:8766/udp"
+      - "27016:27016/udp"
+    env_file:
+      - .env
+    volumes:
+      - ./data/arma2:/arma2
+      # SteamCMD client data: keeps the login (and Steam Guard token) across
+      # container re-creation. Remove the volume to force a fresh login.
+      - steam:/root/Steam
+      # Mod packs (7z/zip/rar) placed here are used instead of downloading.
+      - ./mods:/mods:ro
+    depends_on:
+      mariadb:
+        condition: service_healthy
+    stop_grace_period: 60s
+
+  # Hive database for the DayZ / DayZ Epoch mods: both store all player and
+  # world state in MySQL through HiveExt.dll.
+  mariadb:
+    image: mariadb:10.11
+    container_name: arma2-db
+    restart: unless-stopped
+    command:
+      - --event-scheduler=ON
+      - --max_allowed_packet=64M
+    environment:
+      MARIADB_DATABASE: ${DB_NAME:-dayz_epoch}
+      MARIADB_USER: ${DB_USER:-dayz}
+      MARIADB_PASSWORD: ${DB_PASSWORD:-dayz}
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-dayzroot}
+    volumes:
+      - db:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
+
+volumes:
+  steam:
+  db:
