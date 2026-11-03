@@ -1,0 +1,59 @@
+Current testing suggests the following:
+Whenever I try using any variables in the bat script, the dedicated server fails to load Battleye.
+You must be logged into steam, and steam client must be running in the background!
+
+Client side fixes and prestage for server.
+
+Step
+	Install Arma 2 and Arma 2: Operation Arrowhead
+
+step
+	fix battleye in the arma 2 install.
+	Download "https://cdn.discordapp.com/attachments/105465217185538048/1320836533464596570/BE_A2OA_v164_2024_Windows11_fix_v2.7z?ex=6ae8e561&is=6ae793e1&hm=633b30a678510ab0069661f2e31a837e0e3c91141a89a0afc56f698ce5ad4c88&"
+	Copy the folder contents to your Opeation arrowhead folder. Over write the current files.
+	
+Step
+	copy the "addons" folder from your arma 2 install to the opeation arowhead install folder. 
+	
+-----------------------------------------------------------
+
+Server side setup
+
+Step 
+	Setup Database and config file "HiveExt.ini", I'm using the defaults for now.
+
+Step 
+	You want to create a folder to work out of, edit the "set_epoch_drive.cmd" bat file to point to this folder you created. Run the bat file, create a subfolder in the drive, this is required as arma2server will not launch from the root of a drive. I use "a2" as my subfolder so the folder structure becomes: e:\a2\armafiles.
+
+Step 
+	Download the dayz_epoch server files from: https://drive.usercontent.google.com/download?id=19iCJevU008g311vsxJNR0PjYmkSv36YK&export=download&authuser=0&confirm=t&uuid=f9ff194b-1730-46cd-99b7-ab37067a23ec&at=AMrWOn2KicdgFMs0Czlvh5KfjhKj%3A1793582616560
+	and 	https://drive.usercontent.google.com/download?id=1jDn86sfTwcRae4NZgHK76k_CaY1jOUP2&export=download&authuser=0&confirm=t&uuid=a55bb189-6b33-4d20-b6e2-ff1cff74aa17&at=AMrWOn3pBd9k4YR1R0L3JSXkrF5e%3A1793582631324
+	
+Step 
+	Unblock the files, and then extract the files using 7zip.
+	The Server files folder is password protected with "123456"
+	Copy the @DayZ_Epoch folder to E:\a2\ so the path looks like: E:\a2\@DayZ_Epoch
+	
+Step 
+	Copy this list of folders to E:\a2\
+		@DayZ_Epoch
+		@DayZ_Epoch_Server
+		dlls
+		DZE_Server_Config
+		Keys
+		MPMissions
+		
+Step
+	Copy the dlls from the dlls folder to the E:\a2\ folder
+	
+Step 
+	Copy the bikey's from the subfolders found inside of the keys folder to the keys folder.
+	Don't overwrite keys, skip when there are duplicates.
+
+Step
+	Update the server launch files.
+	First update the bat files to point to the new directory "E:\a2\DZE_Server_Config" instead of "E:\a2\DZE_Server_Config"
+	Copy the bat files to E:\a2\
+
+step
+	Copy fixed arma client files to directory E:\a2\

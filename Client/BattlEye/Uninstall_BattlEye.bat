@@ -1,0 +1,3 @@
+@echo off
+echo Uninstalling BattlEye...
+..\ArmA2OA_BE.exe 4

@@ -1,0 +1,1 @@
+subst D: "%userprofile%\Desktop\a2-epochSetup"

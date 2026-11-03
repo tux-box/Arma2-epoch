@@ -1,0 +1,3 @@
+@echo off
+echo Installing BattlEye...
+..\ArmA2OA_BE.exe 1 0
