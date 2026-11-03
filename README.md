@@ -1,0 +1,10 @@
+The be files in this project are accretedited to:
+
+server ID: 105462288051380224
+Server: discord.gg/arma
+
+Channel ID: 105465217185538048
+https://discord.com/channels/105462288051380224/105465217185538048
+
+Message ID: 1320836533783236740
+https://discord.com/channels/105462288051380224/105465217185538048/1320836305646649407
