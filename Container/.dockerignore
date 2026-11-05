@@ -1,0 +1,4 @@
+# The game files live in the ./arma bind mount, never in the build context.
+arma
+.env
+.git

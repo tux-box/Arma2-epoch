@@ -1,0 +1,24 @@
+name: arma2
+
+services:
+  server:
+    build: .
+    image: arma2-server:dev
+    container_name: arma2-server
+    stdin_open: true
+    tty: true
+    environment:
+      STEAM_USERNAME: ${STEAM_USERNAME:-}
+      STEAM_PASSWORD: ${STEAM_PASSWORD:-}
+      PORT: ${PORT:-2302}
+      NAME: ${NAME:-server}
+      CONFIG: ${CONFIG:-}
+      CFG: ${CFG:-}
+      PROFILES: ${PROFILES:-}
+      MODS: ${MODS:-}
+    volumes:
+      # Game files, mods, missions and the Wine prefix all live here.
+      - ./arma:/arma
+    ports:
+      # Arma 2 OA game/query traffic.
+      - "2302-2305:2302-2305/udp"

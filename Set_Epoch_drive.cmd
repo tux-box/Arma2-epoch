@@ -1,1 +1,1 @@
-subst D: "%userprofile%\Desktop\a2-epochSetup"
+subst E: "%userprofile%\Desktop\a2-epoch"
